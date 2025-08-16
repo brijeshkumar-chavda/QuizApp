@@ -9,20 +9,14 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() {
     return _HomeScreenState();
   }
-} 
+}
 
 class _HomeScreenState extends State<HomeScreen> {
-  Widget? activeScreen;
-
-  @override
-  void initState() {
-    activeScreen = StartScreen(switchToQuizScreen: switchToQuizScreen);
-    super.initState();
-  }
+  var activeScreen = "start-screen";
 
   void switchToQuizScreen() {
     setState(() {
-      activeScreen = QuizScreen();
+      activeScreen = "quiz-screen";
     });
   }
 
@@ -38,7 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
               end: Alignment.bottomRight,
             ),
           ),
-          child: activeScreen,
+          child: activeScreen == "start-screen"
+              ? StartScreen(switchToQuizScreen: switchToQuizScreen)
+              : QuizScreen(),
         ),
       ),
     );
