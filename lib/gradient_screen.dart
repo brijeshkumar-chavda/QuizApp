@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/questions_list.dart';
 import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 
@@ -12,7 +13,7 @@ class GradientScreen extends StatefulWidget {
 }
 
 class _GradientScreenState extends State<GradientScreen> {
-  final List<String> selectedOptions = [];
+  final List<String> selectedAnswers = [];
   var activeScreen = "start-screen";
 
   void switchToQuizScreen() {
@@ -21,15 +22,21 @@ class _GradientScreenState extends State<GradientScreen> {
     });
   }
 
-  void selectOption(String answer) {
-    selectedOptions.add(answer);
+  void selectAnswer(String answer) {
+    selectedAnswers.add(answer);
+
+    if (selectedAnswers.length == questionsList.length) {
+      setState(() {
+        activeScreen = "start-screen";
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final screenWidget = activeScreen == "start-screen"
         ? StartScreen(switchToQuizScreen: switchToQuizScreen)
-        : QuestionsScreen(onSelectOption: selectOption);
+        : QuestionsScreen(onSelectAnswer: selectAnswer);
 
     return MaterialApp(
       home: Scaffold(
