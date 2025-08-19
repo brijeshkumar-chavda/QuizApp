@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/answer_button.dart';
 import 'package:quiz_app/data/questions.dart';
 
-class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+class QuestionScreen extends StatefulWidget {
+  const QuestionScreen({super.key});
 
   @override
-  State<QuizScreen> createState() {
-    return _QuizScreenState();
+  State<QuestionScreen> createState() {
+    return _QuestionScreenState();
   }
 }
 
-class _QuizScreenState extends State<QuizScreen> {
+class _QuestionScreenState extends State<QuestionScreen> {
   var currentQuestionIndex = 0;
 
-  void nextQuestion() {
+  void answerQuestion() {
     setState(() {
       currentQuestionIndex++;
     });
@@ -39,7 +39,7 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
             SizedBox(height: 30),
             ...currentQuestion.getShuffledAnswer().map((answer) {
-              return AnswerButton(answerText: answer, onTap: nextQuestion);
+              return AnswerButton(answerText: answer, onTap: answerQuestion);
             }),
           ],
         ),
