@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AnswerButton extends StatelessWidget {
-  const AnswerButton({
+class OptionButton extends StatelessWidget {
+  const OptionButton({
     super.key,
     required this.answerText,
     required this.onTap,

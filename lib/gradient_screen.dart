@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/question_screen.dart';
+import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class GradientScreen extends StatefulWidget {
+  const GradientScreen({super.key});
 
   @override
-  State<HomeScreen> createState() {
-    return _HomeScreenState();
+  State<GradientScreen> createState() {
+    return _GradientScreenState();
   }
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _GradientScreenState extends State<GradientScreen> {
+  final List<String> selectedOptions = [];
   var activeScreen = "start-screen";
 
   void switchToQuizScreen() {
@@ -20,11 +21,15 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void selectOption(String answer) {
+    selectedOptions.add(answer);
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidget = activeScreen == "start-screen"
         ? StartScreen(switchToQuizScreen: switchToQuizScreen)
-        : QuestionScreen();
+        : QuestionsScreen(onSelectOption: selectOption);
 
     return MaterialApp(
       home: Scaffold(

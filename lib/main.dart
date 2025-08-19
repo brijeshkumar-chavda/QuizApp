@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/home_screen.dart';
+import 'package:quiz_app/gradient_screen.dart';
 
 void main() {
-  runApp(HomeScreen());
+  runApp(GradientScreen());
 }
