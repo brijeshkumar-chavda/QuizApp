@@ -13,7 +13,7 @@ class GradientScreen extends StatefulWidget {
 }
 
 class _GradientScreenState extends State<GradientScreen> {
-  final List<String> selectedAnswers = [];
+  List<String> selectedAnswers = [];
   var activeScreen = "start-screen";
 
   void switchToQuizScreen() {
@@ -27,6 +27,7 @@ class _GradientScreenState extends State<GradientScreen> {
 
     if (selectedAnswers.length == questionsList.length) {
       setState(() {
+        selectedAnswers = [];
         activeScreen = "start-screen";
       });
     }
