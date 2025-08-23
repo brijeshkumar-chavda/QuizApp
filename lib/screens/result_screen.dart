@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/data/questions_list.dart';
-import 'package:quiz_app/question_summary/question_summary.dart';
-import 'package:quiz_app/start_screen.dart';
+import 'package:quiz_app/widgets/summary_widget.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen({super.key, required this.selectedAnswers});
@@ -16,7 +15,7 @@ class ResultScreen extends StatelessWidget {
       summary.add({
         "question_index": i,
         "question": questionsList[i].question,
-        "correct_answers": questionsList[i].answers[0],
+        "correct_answer": questionsList[i].answers[0],
         "user_answer": selectedAnswers[i],
       });
     }
@@ -29,7 +28,7 @@ class ResultScreen extends StatelessWidget {
     final summaryData = getSummaryData();
     final numberOfTotalQuestions = questionsList.length;
     final numberOfCorrectQuestions = summaryData.where((data) {
-      return data["user_answer"] == data["correct_answers"];
+      return data["user_answer"] == data["correct_answer"];
     }).length;
 
     return SizedBox(
@@ -50,11 +49,23 @@ class ResultScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30),
-            QuestionSummary(summaryData: getSummaryData()),
+            SizedBox(
+              height: 300,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: summaryData.map((itemData) {
+                    return SummaryWidget(itemData: itemData);
+                  }).toList(),
+                ),
+              ),
+            ),
             SizedBox(height: 30),
-            FilledButton(onPressed: () {
-              // StartScreen(switchToQuizScreen: StartScreen.new),
-            }, child: Text("Restart Quiz!")),
+            FilledButton(
+              onPressed: () {
+                // StartScreen(switchToQuizScreen: StartScreen.new),
+              },
+              child: Text("Restart Quiz!"),
+            ),
           ],
         ),
       ),

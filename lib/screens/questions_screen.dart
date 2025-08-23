@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/answer_button.dart';
+import 'package:quiz_app/widgets/answer_button_widget.dart';
 import 'package:quiz_app/data/questions_list.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -47,7 +47,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             ),
             SizedBox(height: 30),
             ...currentQuestion.getShuffledAnswer().map((answer) {
-              return AnswerButton(
+              return AnswerButtonWidget(
                 answerText: answer,
                 onTap: () {
                   goToNextQuestion(answer);
