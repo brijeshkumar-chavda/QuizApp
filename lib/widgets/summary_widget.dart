@@ -37,7 +37,7 @@ class SummaryWidget extends StatelessWidget {
                   style: GoogleFonts.lato(color: Colors.white),
                 ),
                 Text(
-                  "Correct Answer: ${itemData["correct_answers"] ?? " "}",
+                  "Correct Answer: ${itemData["correct_answer"] as String}",
                   style: GoogleFonts.lato(color: Colors.lightGreenAccent),
                 ),
               ],
