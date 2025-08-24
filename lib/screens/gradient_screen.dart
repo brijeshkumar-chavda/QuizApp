@@ -33,6 +33,13 @@ class _GradientScreenState extends State<GradientScreen> {
     }
   }
 
+  void restartQuiz() {
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = "start-screen";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var currentScreenWidget = activeScreen == "start-screen"
@@ -40,7 +47,10 @@ class _GradientScreenState extends State<GradientScreen> {
         : QuestionsScreen(onSelectAnswer: selectAnswer);
 
     if (activeScreen == "result-screen") {
-      currentScreenWidget = ResultScreen(selectedAnswers: selectedAnswers);
+      currentScreenWidget = ResultScreen(
+        selectedAnswers: selectedAnswers,
+        onRestart: restartQuiz,
+      );
     }
 
     return MaterialApp(
