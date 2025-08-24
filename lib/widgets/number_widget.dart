@@ -14,10 +14,11 @@ class NumberWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final questionNumber = questionIndex + 1;
     return Container(
-      width: 30,
-      height: 30,
+      width: 40,
+      height: 40,
       alignment: Alignment.center,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
         color: isCorrectAnswer ? Colors.green : Colors.red,
       ),
       child: Text(
