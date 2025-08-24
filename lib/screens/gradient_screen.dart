@@ -28,7 +28,6 @@ class _GradientScreenState extends State<GradientScreen> {
 
     if (selectedAnswers.length == questionsList.length) {
       setState(() {
-        // selectedAnswers = [];
         activeScreen = "result-screen";
       });
     }

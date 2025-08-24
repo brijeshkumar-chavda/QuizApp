@@ -11,6 +11,7 @@ class SummaryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final isCorrectAnswer =
         itemData["user_answer"] == itemData['correct_answer'];
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
@@ -20,8 +21,10 @@ class SummaryWidget extends StatelessWidget {
             isCorrectAnswer: isCorrectAnswer,
             questionIndex: itemData["question_index"] as int,
           ),
+          SizedBox(width: 20),
           Expanded(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   itemData["question"] as String,
